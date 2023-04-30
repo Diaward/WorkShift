@@ -20,6 +20,14 @@ public class EmployeeSkills {
     @ManyToMany(mappedBy = "employeeSkills")
     Set<EmployeePersonalData> employeePersonalData;
 
+    public EmployeeSkills() {
+
+    }
+
+    public EmployeeSkills(String skillName) {
+        this.skillName = skillName;
+    }
+
     public long getId() {
         return id;
     }

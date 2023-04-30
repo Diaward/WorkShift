@@ -33,11 +33,24 @@ public class EmployeePersonalData {
     @Column(name="isAssociate")
     private boolean isAssociate;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
             inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SKILLS_id"))
     Set<EmployeeSkills> employeeSkills;
+
+    public EmployeePersonalData() {
+
+    }
+    public EmployeePersonalData(String name, String surname, int age, String task, boolean seniority, boolean isAssociate, Set<EmployeeSkills> employeeSkills) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.task = task;
+        this.seniority = seniority;
+        this.isAssociate = isAssociate;
+        this.employeeSkills = employeeSkills;
+    }
 
     public long getId() {
         return id;
