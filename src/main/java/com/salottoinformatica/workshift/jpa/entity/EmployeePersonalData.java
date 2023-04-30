@@ -1,17 +1,19 @@
 package com.salottoinformatica.workshift.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="employeePersonalData")
 public class EmployeePersonalData {
 
     @Id
-    @Column(name="id")
-    private String id;
+    @GeneratedValue
+    @Column(name = "id", nullable = false)
+    private long id;
 
     @Column(name="name")
     private String name;
@@ -31,11 +33,17 @@ public class EmployeePersonalData {
     @Column(name="isAssociate")
     private boolean isAssociate;
 
-    public String getId() {
+    @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SKILLS_id"))
+    Set<EmployeeSkills> employeeSkills;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

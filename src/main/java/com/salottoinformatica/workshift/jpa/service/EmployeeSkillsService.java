@@ -1,7 +1,9 @@
 package com.salottoinformatica.workshift.jpa.service;
 
 import com.salottoinformatica.workshift.jpa.entity.EmployeePersonalData;
+import com.salottoinformatica.workshift.jpa.entity.EmployeeSkills;
 import com.salottoinformatica.workshift.jpa.repository.EmployeePersonalDataRepository;
+import com.salottoinformatica.workshift.jpa.repository.EmployeeSkillsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,21 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class EmployeePersonalDataService {
+public class EmployeeSkillsService {
 
-    private final EmployeePersonalDataRepository employeePersonalDataRepository;
+    private final EmployeeSkillsRepository employeeSkillsRepository;
 
-    public EmployeePersonalDataService(EmployeePersonalDataRepository employeePersonalDataRepository) {
-        this.employeePersonalDataRepository = employeePersonalDataRepository;
+    public EmployeeSkillsService(EmployeeSkillsRepository employeeSkillsRepository) {
+        this.employeeSkillsRepository = employeeSkillsRepository;
     }
 
     /**
      *
      * @return: employeePersonalDataList - the list containing all the employeePersonalDataList
      */
-    public List<EmployeePersonalData> getAllEmployeePersonalDataService(){
-        List <EmployeePersonalData> employeePersonalDataList = new ArrayList<>();
-        employeePersonalDataRepository.findAll()
+    public List<EmployeeSkills> getAllEmployeeSkills(){
+        List <EmployeeSkills> employeePersonalDataList = new ArrayList<>();
+        employeeSkillsRepository.findAll()
                 .forEach(employeePersonalDataList::add);
 
         return employeePersonalDataList;
@@ -33,8 +35,8 @@ public class EmployeePersonalDataService {
      *
      * @param newEmployeePersonalData: newEmployeePersonalData to be stored in db
      */
-    public void addEmployeePersonalData(EmployeePersonalData newEmployeePersonalData) {
-        employeePersonalDataRepository.save(newEmployeePersonalData);
+    public void addEmployeeSkills(EmployeeSkills newEmployeePersonalData) {
+        employeeSkillsRepository.save(newEmployeePersonalData);
     }
 
     /**
@@ -43,7 +45,7 @@ public class EmployeePersonalDataService {
      * @param id: id of the league to be searched
      * @return: the data of the league
      */
-    public EmployeePersonalData getEmployeePersonalData(String id) {
-        return employeePersonalDataRepository.findById(id).get();
+    public EmployeeSkills getEmployeeSkills(String id) {
+        return employeeSkillsRepository.findById(id).get();
     }
 }

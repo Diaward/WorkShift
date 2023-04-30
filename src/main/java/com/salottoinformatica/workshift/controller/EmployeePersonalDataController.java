@@ -11,8 +11,11 @@ import java.util.List;
 
 @RestController
 public class EmployeePersonalDataController {
-    @Autowired
-    private EmployeePersonalDataService employeePersonalDataService;
+    private final EmployeePersonalDataService employeePersonalDataService;
+
+    public EmployeePersonalDataController(EmployeePersonalDataService employeePersonalDataService) {
+        this.employeePersonalDataService = employeePersonalDataService;
+    }
 
     @RequestMapping("/employee")
     public List<EmployeePersonalData> getAllEmployeePersonalData(){
