@@ -38,6 +38,12 @@ public class EmployeePersonalData {
             joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
             inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SKILLS_id"))
     Set<EmployeeSkills> employeeSkills;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SHIFTS_id"))
+    Set<EmployeeShifts> employeeShifts;
 
     public EmployeePersonalData() {
 
@@ -52,7 +58,10 @@ public class EmployeePersonalData {
         this.employeeSkills = employeeSkills;
     }
 
-    public long getId() {
+    public EmployeePersonalData(long id) {
+		this.id = id;
+	}
+	public long getId() {
         return id;
     }
 
@@ -62,7 +71,7 @@ public class EmployeePersonalData {
 
     public String getName() {
         return name;
-    }
+    } 
 
     public void setName(String name) {
         this.name = name;
