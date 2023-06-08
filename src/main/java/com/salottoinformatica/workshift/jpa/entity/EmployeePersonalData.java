@@ -38,12 +38,13 @@ public class EmployeePersonalData {
             joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
             inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SKILLS_id"))
     Set<EmployeeSkills> employeeSkills;
-    
-    @ManyToMany(cascade = CascadeType.ALL)
+
+
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             joinColumns = @JoinColumn(name = "EMPLOYEE_PERSONAL_DATA_id"),
-            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_SHIFTS_id"))
-    Set<EmployeeShifts> employeeShifts;
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_DATA_SHIFT_RELATIONS_id"))
+    Set<EmployeeDataShiftRelations> employeeDataShiftRelations;
 
     public EmployeePersonalData() {
 

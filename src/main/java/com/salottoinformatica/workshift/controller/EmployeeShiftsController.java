@@ -35,7 +35,7 @@ public class EmployeeShiftsController {
         HashSet<EmployeePersonalData> employees = new HashSet<EmployeePersonalData>();
         employees.add(new EmployeePersonalData(idUtente1));
         employees.add(new EmployeePersonalData(idUtente2));
-    	employeeShiftsService.addEmployeeShifts(new EmployeeShifts(startShift,endShift,duration,isHoliday,isWeekend,employees));
+    	//employeeShiftsService.addEmployeeShifts(new EmployeeShifts(startShift,endShift,duration,isHoliday,isWeekend,employees));
     }
     
     //test
@@ -44,6 +44,6 @@ public class EmployeeShiftsController {
         HashSet<EmployeePersonalData> employees = new HashSet<EmployeePersonalData>();
         employees.add(new EmployeePersonalData(idUtente1));
         employees.add(new EmployeePersonalData(idUtente2));
-    	employeeShiftsService.addEmployeeShifts(new EmployeeShifts(new Timestamp(System.currentTimeMillis()),new Timestamp(System.currentTimeMillis()),duration,isHoliday,isWeekend,employees));
+    	//employeeShiftsService.addEmployeeShifts(new EmployeeShifts(new Timestamp(System.currentTimeMillis()),new Timestamp(System.currentTimeMillis()),duration,isHoliday,isWeekend,employees));
     }
 }

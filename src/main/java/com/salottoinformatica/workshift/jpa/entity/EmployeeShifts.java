@@ -1,5 +1,6 @@
 package com.salottoinformatica.workshift.jpa.entity;
 
+import com.salottoinformatica.workshift.jpa.entity.entityid.EmployeeShiftID;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -9,17 +10,9 @@ import java.util.Set;
 @Table(name="employeeShifts")
 public class EmployeeShifts {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
-    private long id;
+	@EmbeddedId
+	private EmployeeShiftID employeeShiftID;
 
-    @Column(name="startShift")
-    private Timestamp startShift;
-    
-    @Column(name="endShift")
-    private Timestamp endShift;
-    
     @Column(name="duration")
     private int duration;
     
@@ -29,45 +22,21 @@ public class EmployeeShifts {
     @Column(name="isWeekend")
     private boolean isWeekend;
 
+	/*
     @ManyToMany(mappedBy = "employeeShifts")
     Set<EmployeePersonalData> employeePersonalData;
+	*/
 
     public EmployeeShifts() {
 
     }
 
-	public EmployeeShifts(Timestamp startShift, Timestamp endShift, int duration, boolean isHoliday,
-			boolean isWeekend, Set<EmployeePersonalData> employeePersonalData) {
-		this.startShift = startShift;
-		this.endShift = endShift;
+	public EmployeeShifts(EmployeeShiftID employeeShiftID, int duration, boolean isHoliday, boolean isWeekend, Set<EmployeePersonalData> employeePersonalData) {
+		this.employeeShiftID = employeeShiftID;
 		this.duration = duration;
 		this.isHoliday = isHoliday;
 		this.isWeekend = isWeekend;
-		this.employeePersonalData = employeePersonalData;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Timestamp getStartShift() {
-		return startShift;
-	}
-
-	public void setStartShift(Timestamp startShift) {
-		this.startShift = startShift;
-	}
-
-	public Timestamp getEndShift() {
-		return endShift;
-	}
-
-	public void setEndShift(Timestamp endShift) {
-		this.endShift = endShift;
+		//this.employeePersonalData = employeePersonalData;
 	}
 
 	public int getDuration() {
